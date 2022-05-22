@@ -15,12 +15,14 @@ jobs:
       run: |
         cd ~/esp/micropython
         source tools/ci.sh && ci_esp32_idf44_setup
+        
     - name: Build
       run: |
         cd ~/esp/micropython
         source tools/ci.sh && ci_esp32_build  
+
     - name: Upload firmware
-      - uses: actions/upload-artifact@main
-        with:
-          name: c3-release
-          path: ~/esp/micropython/ports/esp32
+    - uses: actions/upload-artifact@main
+      with:
+        name: c3-release
+        path: ~/esp/micropython/ports/esp32

@@ -1,10 +1,6 @@
 name: esp32c3
 
-on:
-  push:
-    tags:
-        - v*
-
+on:workflow_dispatch
 jobs:
   build_idf44:
     runs-on: ubuntu-20.04
@@ -23,3 +19,8 @@ jobs:
       run: |
         cd ~/esp/micropython
         source tools/ci.sh && ci_esp32_build
+    - name: Upload firmware
+        uses: actions/upload-artifact@main
+        with:
+          name: c3-release
+          path: ~/esp/micropython/ports/esp32

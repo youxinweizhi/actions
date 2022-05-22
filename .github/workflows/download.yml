@@ -22,7 +22,7 @@ jobs:
         cd ~/esp/micropython
         make ${MAKEOPTS} -C mpy-cross
         make ${MAKEOPTS} -C ports/esp32 submodules
-        make ${MAKEOPTS} -C ports/esp32 BOARD=MYESP32_C3
+        make ${MAKEOPTS} -C ports/esp32 BOARD=GENERIC_C3
 
     - name: Upload firmware
       uses: actions/upload-artifact@main

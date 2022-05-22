@@ -18,7 +18,7 @@ jobs:
         
     - name: Build
       run: |
-        source ./esp-idf/export.sh
+        source ~/esp/micropython/esp-idf/export.sh
         cd ~/esp/micropython
         make ${MAKEOPTS} -C mpy-cross
         make ${MAKEOPTS} -C ports/esp32 submodules

@@ -1,4 +1,4 @@
-name: esp32c3
+name: download
 
 on: workflow_dispatch
 jobs:

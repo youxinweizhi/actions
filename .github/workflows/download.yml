@@ -1,0 +1,31 @@
+name: esp32c3
+
+on: workflow_dispatch
+jobs:
+  build_idf44:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: git clone micropython
+      run: |
+        mkdir -p ~/esp
+        cd ~/esp
+        git clone https://github.com/micropython/micropython.git
+        
+    - name: Install packages
+      run: |
+        cd ~/esp/micropython
+        source tools/ci.sh && ci_esp32_idf44_setup
+        
+    - name: Build
+      run: |
+        source esp-idf/export.sh
+        cd ~/esp/micropython
+        make ${MAKEOPTS} -C mpy-cross
+        make ${MAKEOPTS} -C ports/esp32 submodules
+        make ${MAKEOPTS} -C ports/esp32 BOARD=MYESP32_C3
+
+    - name: Upload firmware
+      uses: actions/upload-artifact@main
+      with:
+        name: c3-release
+        path: ~/esp/micropython/ports/esp32/build*/firmware.bin

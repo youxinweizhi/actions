@@ -20,7 +20,7 @@ jobs:
         cd ~/esp/micropython
         source tools/ci.sh && ci_esp32_build
     - name: Upload firmware
-        uses: actions/upload-artifact@main
+      - uses: actions/upload-artifact@main
         with:
           name: c3-release
           path: ~/esp/micropython/ports/esp32

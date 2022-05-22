@@ -1,0 +1,20 @@
+name: esp32c3
+
+on:
+  push:
+    tags:
+        - v*
+
+jobs:
+  build_idf44:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: git clone micropython
+      run: |
+        git clone https://github.com/micropython/micropython.git
+        cd micropython
+    - name: Install packages
+      run: source tools/ci.sh && ci_esp32_idf44_setup
+    - name: Build
+      run: source tools/ci.sh && ci_esp32_build

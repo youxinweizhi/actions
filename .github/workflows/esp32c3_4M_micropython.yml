@@ -13,7 +13,7 @@ jobs:
       run: |
         mkdir -p ~/esp
         cd ~/esp
-        git clone git@github.com:youxinweizhi/micropython.git   
+        git clone https://github.com/youxinweizhi/micropython.git
         
     - run: git checkout esp32c3
     

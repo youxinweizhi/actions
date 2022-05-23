@@ -16,11 +16,14 @@ jobs:
         git clone -b esp32c3 https://github.com/youxinweizhi/micropython.git
 
     - name: Install packages
-      run: source tools/ci.sh && ci_esp32_idf44_setup
+      run: |
+        cd ~/esp/micropython
+        source tools/ci.sh && ci_esp32_idf44_setup
         
     - name: Build
       run: |
-        source esp-idf/export.sh
+        source ~/esp/micropython/esp-idf/export.sh
+        cd ~/esp/micropython
         make  -C mpy-cross
         make  -C ports/esp32 submodules
         make  -C ports/esp32 BOARD=MYESP32_C3_4M

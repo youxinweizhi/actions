@@ -32,4 +32,4 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: esp32c3_2M_firmware
-        path: ports/esp32/build*/firmware.bin
+        path: ~/esp/micropython/ports/esp32/build*/firmware.bin

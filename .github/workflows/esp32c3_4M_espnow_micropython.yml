@@ -9,14 +9,20 @@ jobs:
     runs-on: ubuntu-20.04
     
     steps:
-    - uses: actions/checkout@v2
+    
     
     - name: git clone micropython
       run: |
         mkdir -p ~/esp
         cd ~/esp
         git clone -b espnow-g20-v1.18 https://github.com/glenn20/micropython.git
-
+    
+    - uses: actions/checkout@v2
+      run:|
+        cp -rf actions/micropython/main ~/esp/micropython/ports/esp32/
+        cp -rf actions/micropython/MYESP32_C3_4M ~/esp/micropython/ports/esp32/boards/
+        cp -rf actions/micropython/smartconfig.c ~/esp/micropython/ports/esp32/smartconfig.c
+        
     - name: Install packages
       run: |
         cd ~/esp/micropython

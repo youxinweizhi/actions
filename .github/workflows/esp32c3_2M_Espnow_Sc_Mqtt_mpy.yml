@@ -38,5 +38,5 @@ jobs:
     - name: Upload firmware
       uses: actions/upload-artifact@main
       with:
-        name: esp32c3_4M_espnow_smartconfig_mqtt_ping_firmware
+        name: esp32c3_2M_espnow_smartconfig_mqtt_ping_firmware
         path: ~/esp/micropython/ports/esp32/build*/firmware.bin

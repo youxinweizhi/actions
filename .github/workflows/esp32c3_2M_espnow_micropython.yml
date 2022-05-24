@@ -33,10 +33,10 @@ jobs:
         cd ~/esp/micropython
         make  -C mpy-cross
         make  -C ports/esp32 submodules
-        make  -C ports/esp32 BOARD=MYESP32_C3_4M
+        make  -C ports/esp32 BOARD=MYESP32_C3_2M
 
     - name: Upload firmware
       uses: actions/upload-artifact@main
       with:
-        name: esp32c3_4M_espnow_firmware
+        name: esp32c3_4M_espnow_smartconfig_mqtt_ping_firmware
         path: ~/esp/micropython/ports/esp32/build*/firmware.bin

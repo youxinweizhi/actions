@@ -1,4 +1,4 @@
-name: esp32c3_4M_micropython
+name: esp32c3_4M_espnow_micropython
 
 on: 
   push:

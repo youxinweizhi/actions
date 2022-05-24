@@ -1,4 +1,4 @@
-name: esp32c3_4M_espnow_micropython
+name: esp32c3_2M_Sc_Mqtt
 
 on: 
   push:
@@ -8,19 +8,12 @@ jobs:
   build_idf44:
     runs-on: ubuntu-20.04
     
-    steps:    
+    steps:
     - name: git clone micropython
       run: |
         mkdir -p ~/esp
         cd ~/esp
-        git clone -b espnow-g20-v1.18 https://github.com/glenn20/micropython.git
-
-    - name: clone this project
-      run: |
-        git clone https://github.com/youxinweizhi/actions.git
-        cp -rf actions/micropython/main ~/esp/micropython/ports/esp32/
-        cp -rf actions/micropython/MYESP32_C3_4M ~/esp/micropython/ports/esp32/boards/
-        cp -rf actions/micropython/smartconfig.c ~/esp/micropython/ports/esp32/smartconfig.c       
+        git clone -b esp32c3 https://github.com/youxinweizhi/micropython.git  
     
     - name: Install packages
       run: |
@@ -33,10 +26,10 @@ jobs:
         cd ~/esp/micropython
         make  -C mpy-cross
         make  -C ports/esp32 submodules
-        make  -C ports/esp32 BOARD=MYESP32_C3_4M
+        make  -C ports/esp32 BOARD=MYESP32_C3_2M
 
     - name: Upload firmware
       uses: actions/upload-artifact@main
       with:
-        name: esp32c3_4M_espnow_smartconfig_mqtt_ping_firmware
+        name: esp32c3_2M_smartconfig_mqtt_firmware
         path: ~/esp/micropython/ports/esp32/build*/firmware.bin

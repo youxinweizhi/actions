@@ -20,6 +20,7 @@ jobs:
         git clone https://github.com/youxinweizhi/actions.git
         cp -rf actions/micropython/main ~/esp/micropython/ports/esp32/
         cp -rf actions/micropython/MYESP32_C3_4M ~/esp/micropython/ports/esp32/boards/
+        cp -rf actions/micropython/help.c ~/esp/micropython/ports/esp32/help.c
         cp -rf actions/micropython/smartconfig.c ~/esp/micropython/ports/esp32/smartconfig.c       
     
     - name: Install packages

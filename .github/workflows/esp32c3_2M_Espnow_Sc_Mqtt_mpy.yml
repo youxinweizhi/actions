@@ -20,7 +20,8 @@ jobs:
         git clone https://github.com/youxinweizhi/actions.git
         cp -rf actions/micropython/main ~/esp/micropython/ports/esp32/
         cp -rf actions/micropython/MYESP32_C3_2M ~/esp/micropython/ports/esp32/boards/
-        cp -rf actions/micropython/smartconfig.c ~/esp/micropython/ports/esp32/smartconfig.c       
+        cp -rf actions/micropython/help.c ~/esp/micropython/ports/esp32/help.c
+        cp -rf actions/micropython/smartconfig.c ~/esp/micropython/ports/esp32/smartconfig.c        
     
     - name: Install packages
       run: |
@@ -38,5 +39,5 @@ jobs:
     - name: Upload firmware
       uses: actions/upload-artifact@main
       with:
-        name: esp32c3_2M_espnow_smartconfig_mqtt_ping_firmware
+        name: esp32c3_2M_espnow_smartconfig_mqtt_firmware
         path: ~/esp/micropython/ports/esp32/build*/firmware.bin

@@ -1,7 +1,6 @@
 name: esp32c3_2M_Espnow_Sc_Mqtt
 
 on: 
-  push:
   workflow_dispatch:
 
 jobs:

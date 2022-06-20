@@ -38,7 +38,7 @@ jobs:
         cd ~/esp/micropython
         make  -C mpy-cross
         make  -C ports/esp32 submodules
-        make  -C ports/esp32 BOARD=MYESP32_C3_4M USER_C_MODULES=../../../../st7789_mpy/st7789/micropython.cmake 
+        make  -C ports/esp32 BOARD=MYESP32_C3_4M USER_C_MODULES=../../st7789_mpy/st7789/micropython.cmake 
 
     - name: Upload firmware
       uses: actions/upload-artifact@main

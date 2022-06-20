@@ -14,6 +14,8 @@ jobs:
     - name: clone st7789
       run: |
         git clone https://github.com/russhughes/st7789_mpy.git
+        pwd
+        ls ~/esp/
         
     - name: Install packages
       run: |

@@ -13,6 +13,7 @@ jobs:
 
     - name: clone st7789
       run: |
+        cd ~/esp
         git clone https://github.com/russhughes/st7789_mpy.git
         pwd
         ls ~/esp/

@@ -1,0 +1,35 @@
+name: esp32c3 add st7789 for micropython
+
+on: workflow_dispatch
+jobs:
+  build_idf44:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: git clone micropython
+      run: |
+        mkdir -p ~/esp
+        cd ~/esp
+        git clone https://github.com/micropython/micropython.git
+
+    - name: clone st7789
+      run: |
+        git clone https://github.com/russhughes/st7789_mpy.git
+        
+    - name: Install packages
+      run: |
+        cd ~/esp/micropython
+        source tools/ci.sh && ci_esp32_idf44_setup
+        
+    - name: Build
+      run: |
+        source ~/esp/micropython/esp-idf/export.sh
+        cd ~/esp/micropython
+        make  -C mpy-cross
+        make  -C ports/esp32 submodules
+        make  -C ports/esp32 BOARD=GENERIC_C3 USER_C_MODULES=~/esp/st7789_mpy/st7789/micropython.cmake
+
+    - name: Upload firmware
+      uses: actions/upload-artifact@main
+      with:
+        name: esp32c3_st7789-release
+        path: ~/esp/micropython/ports/esp32/build*/firmware.bin

@@ -13,9 +13,11 @@ jobs:
         mkdir -p ~/esp
         cd ~/esp
         git clone -b espnow-g20-v1.18 https://github.com/glenn20/micropython.git
+        sed -i '40 aCONFIG_FREERTOS_IDLE_TASK_STACKSIZE=3072' ~/esp/micropython/ports/esp32/boards/sdkconfig.base
     
     - name: clone st7789
       run: |
+        cd ~/esp
         git clone https://github.com/russhughes/st7789_mpy.git
 
     - name: clone this project
